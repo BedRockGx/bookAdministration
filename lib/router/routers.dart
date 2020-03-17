@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../pages/tab/Tabs.dart';
-import 'package:bookadministration/template/webViewPage.dart';
+// import 'package:bookadministration/template/webViewPage.dart';
 import 'package:bookadministration/template/handle.dart';
 import 'package:bookadministration/template/formPage.dart';
 import 'package:bookadministration/template/listPage.dart';
 
 final routers = {
   '/':(context) => TabsPage(),
-  '/webview':(context, {arguments}) => WebPage(arguments),
+  // '/webview':(context, {arguments}) => WebPage(arguments),
   '/handle':(context, {arguments}) => HandlePage(),
   '/form':(context, {arguments}) => FormPage(arguments),
   '/ListPage':(context, {arguments}) => ListPage(arguments),

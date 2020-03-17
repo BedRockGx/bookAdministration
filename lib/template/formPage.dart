@@ -63,6 +63,7 @@ class _FormPageState extends State<FormPage> {
                       'descrip':code2.text
                     };
                     bookProvide.setBorrowBooks(arguments);
+                    Fluttertoast.showToast(msg: '添加成功');
                   }else if(widget.arguments['title'] == '借书'){
                     for(var i  = 0; i<bookProvide.borrowBooks.length; i++){
                       if(code2.text == bookProvide.borrowBooks[i]['bookname']){
@@ -93,7 +94,7 @@ class _FormPageState extends State<FormPage> {
   }
 
   Widget textWidget(controller, title){
-    final _height = ScreenAdapter.setWidth(150);
+    final _height = ScreenAdapter.setWidth(180);
     return Container(
       decoration: BoxDecoration(
         border: Border(

@@ -102,9 +102,13 @@ class _ListPageState extends State<ListPage> {
 //   我借的图书的列表
   Widget listItem(val){
     return ListTile(
-                leading: FadeInImage.memoryNetwork(
+                leading: Container(
+                  width: ScreenAdapter.setWidth(120),
+                  child: FadeInImage.memoryNetwork(
                   placeholder: kTransparentImage, 
-                  image: val['image']
+                  image: val['image'],
+                  fit: BoxFit.cover,
+                ),
                 ),
                 title: Text(
                           '${val['bookname']}', 
@@ -116,7 +120,7 @@ class _ListPageState extends State<ListPage> {
   //   我借的图书的列表
   Widget vipList(val){
     return ListTile(
-              leading: Icon(IconData(0xe625, fontFamily: 'MyIcon')),
+              leading: Icon(IconData(0xe625, fontFamily: 'MyIcon'), color: Colors.orange),
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[

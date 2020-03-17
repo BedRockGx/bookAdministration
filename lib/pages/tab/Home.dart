@@ -7,6 +7,7 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:dio/dio.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -58,13 +59,13 @@ class _HomePageState extends State<HomePage> {
       body: Stack(
         children: <Widget>[
           Container(
-            height: ScreenAdapter.setWidth(400),
+            height: ScreenAdapter.setWidth(380),
             child: Stack(
               children: <Widget>[
                 ClipPath(
                   clipper:BottomClipper(),
                   child: Container(
-                    height: ScreenAdapter.setHeight(350),
+                    height: ScreenAdapter.setHeight(220),
                     color: data[myIndex],
                   ),
                   // child: swiperStylePage()
@@ -72,7 +73,7 @@ class _HomePageState extends State<HomePage> {
                 Positioned(
                   width: ScreenAdapter.setWidth(750),
                   height: ScreenAdapter.setHeight(300),
-                  top: ScreenAdapter.setHeight(170),
+                  top: ScreenAdapter.setHeight(50),
                   child: Container(
                     child: swiperPage(),
                   ),
@@ -81,7 +82,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Container(
-            margin: EdgeInsets.only(top:ScreenAdapter.setHeight(400)),
+            margin: EdgeInsets.only(top:ScreenAdapter.setHeight(320)),
             child:FutureBuilder(
               future: _futureBuilderFuture,
               builder: (context, snapshot){
@@ -98,8 +99,13 @@ class _HomePageState extends State<HomePage> {
                                 delegate: SliverChildBuilderDelegate(
                                   (context, index) {
                                     return InkWell(
-                                      onTap: (){
-                                        Navigator.pushNamed(context, '/webview', arguments: snapshot.data[index]['url']);
+                                      onTap: () async {
+                                        var url = '${snapshot.data[index]['url']}';
+                                        if (await canLaunch(url)) {
+                                          await launch(url);
+                                        } else {
+                                          throw 'Could not launch $url';
+                                        }
                                       },
                                       child: widgetItem(snapshot.data[index]),
                                     );

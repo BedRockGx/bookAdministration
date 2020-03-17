@@ -95,9 +95,13 @@ class _SearchPageState extends State<SearchPage> {
             return InkWell(
               child:
               ListTile(
-                leading: FadeInImage.memoryNetwork(
-                  placeholder: kTransparentImage, 
-                  image: suggestionList[index]['image']
+                leading: Container(
+                  width: ScreenAdapter.setWidth(120),
+                  child: FadeInImage.memoryNetwork(
+                    placeholder: kTransparentImage, 
+                    image: suggestionList[index]['image'],
+                    fit: BoxFit.cover,
+                  ),
                 ),
                 title: RichText(
                     text: TextSpan(

@@ -30,8 +30,7 @@ dependencies:
   flutter_swiper:
   fab_circular_menu:
   dio:
-  flutter_cupertino_date_picker:
-  flutter_inappwebview:
+  url_launcher:
   provider:
                       
 
